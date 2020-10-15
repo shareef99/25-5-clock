@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 simple-form/
+#firebase files
+.firebaserc
+firebase-hosting-pull-request.yml
+.firebase/
