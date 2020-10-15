@@ -6,9 +6,27 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Styles from "./repeat.css";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    margin10px: {
+        margin: "10px",
+    },
+    marginLeftAndRight: {
+        margin: "0px 10px",
+    },
+    marginTopAndBottom: {
+        margin: "10px 0",
+    },
+    marginRight: {
+        marginRight: "10px",
+    },
+});
 
 export default function Repeat(props) {
     // Constants
+    const classes = useStyles();
     const currentYr = new Date().getFullYear();
     const months = [
         { id: 1, month: "Jan" },
@@ -48,7 +66,7 @@ export default function Repeat(props) {
     ];
 
     // States
-    const [radioButtonValue, setRadioButtonValue] = useState("on");
+    const [radioButtonValue, setRadioButtonValue] = useState("");
     const [monthId, setMonthId] = useState(1); //default
     const [selectedDate, setSelectedDate] = useState(1); //default
     const [selectedValue, setSelectedValue] = useState("first"); //default
@@ -84,8 +102,10 @@ export default function Repeat(props) {
         return (
             <Select
                 value={monthId}
+                variant="outlined"
                 onChange={handleMonthsChange}
                 displayEmpty
+                className={classes.marginLeftAndRight}
                 inputProps={{ "aria-label": "Without label" }}
             >
                 {months.map((x) => (
@@ -103,7 +123,7 @@ export default function Repeat(props) {
      */
     const renderFrequency = (name) => {
         return (
-            <div>
+            <div className="displayCenter">
                 <span>every</span>
                 {renderNumberInputField()}
                 <span>{name}(s)</span>
@@ -118,6 +138,7 @@ export default function Repeat(props) {
                 size="small"
                 id="number"
                 type="number"
+                className={classes.marginLeftAndRight}
                 InputLabelProps={{
                     shrink: true,
                 }}
@@ -131,6 +152,8 @@ export default function Repeat(props) {
                     value={weekdays}
                     onChange={handleWeekdays}
                     displayEmpty
+                    variant="outlined"
+                    className={classes.margin10px}
                     inputProps={{
                         "aria-label": "Without label",
                     }}
@@ -158,7 +181,7 @@ export default function Repeat(props) {
                     onChange={handleRadioButton}
                 >
                     {props.repeatValue === "yearly" && (
-                        <div>
+                        <div className="marginTopAndBottom">
                             <div>
                                 <FormControlLabel
                                     value="on"
@@ -170,6 +193,7 @@ export default function Repeat(props) {
                                     value={selectedDate}
                                     onChange={handleDateChange}
                                     displayEmpty
+                                    variant="outlined"
                                     inputProps={{
                                         "aria-label": "Without label",
                                     }}
@@ -181,7 +205,7 @@ export default function Repeat(props) {
                                     ))}
                                 </Select>
                             </div>
-                            <div>
+                            <div className="marginTopAndBottom">
                                 <FormControlLabel
                                     value="onThe"
                                     control={<Radio />}
@@ -191,6 +215,7 @@ export default function Repeat(props) {
                                     value={selectedValue}
                                     onChange={handleChange}
                                     displayEmpty
+                                    variant="outlined"
                                     inputProps={{
                                         "aria-label": "Without label",
                                     }}
@@ -208,9 +233,9 @@ export default function Repeat(props) {
                         </div>
                     )}
                     {props.repeatValue === "monthly" && (
-                        <div>
+                        <div className="marginTopAndBottom">
                             {renderFrequency("month")}
-                            <div>
+                            <div className="marginTopAndBottom">
                                 <FormControlLabel
                                     value="on"
                                     control={<Radio />}
@@ -218,7 +243,7 @@ export default function Repeat(props) {
                                 />
                                 {renderNumberInputField()}
                             </div>
-                            <div>
+                            <div className="marginTopAndBottom">
                                 <FormControlLabel
                                     value="onThe"
                                     control={<Radio />}
@@ -228,6 +253,7 @@ export default function Repeat(props) {
                                     value={selectedValue}
                                     onChange={handleChange}
                                     displayEmpty
+                                    variant="outlined"
                                     inputProps={{
                                         "aria-label": "Without label",
                                     }}
@@ -243,9 +269,9 @@ export default function Repeat(props) {
                         </div>
                     )}
                     {props.repeatValue === "weekly" && (
-                        <div>
+                        <div className="marginTopAndBottom">
                             {renderFrequency("week")}
-                            <div>
+                            <div className="marginTopAndBottom">
                                 {daysInAWeek.map((x) => (
                                     <Button
                                         key={x.id}

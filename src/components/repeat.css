@@ -1,0 +1,13 @@
+.marginTopAndBottom {
+    margin: 10px 0;
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; */
+}
+
+.displayCenter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
