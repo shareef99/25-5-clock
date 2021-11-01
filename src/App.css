@@ -44,10 +44,21 @@ body {
 }
 
 .session-layout {
-    /* border: solid 5px var(--background-tan); */
-    border-width: 5px;
-    border-radius: 5%;
-    border-color: var(--background-tan);
+    border: solid 5px var(--background-tan);
+    margin: 20px auto;
+    padding: 1.125rem 3rem;
+    border-radius: 1.25rem;
+}
+
+#timer-label {
+    margin: 20px auto;
+    font-size: 1.75rem;
+}
+
+#time-left {
+    display: inline-block;
+    margin: 20px auto;
+    font-size: 3.25rem;
 }
 
 /* Length Component CSS */

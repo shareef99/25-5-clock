@@ -118,7 +118,7 @@ function App() {
                         type="session"
                     />
                 </div>
-                <div className="section-layout">
+                <div className="session-layout">
                     <div className="session-wrapper">
                         <span id="timer-label">
                             {onBreak ? "Break" : "Session"}
@@ -130,11 +130,19 @@ function App() {
                         </div>
                     </div>
                     <div className="function-wrapper">
-                        <button id="start_stop" onClick={controlTime}>
-                            {timerOn ? "⏸" : "▶"}
+                        <button
+                            className="btn"
+                            id="start_stop"
+                            onClick={controlTime}
+                        >
+                            {timerOn ? (
+                                <i className="material-icons">pause</i>
+                            ) : (
+                                <i className="material-icons">play_arrow</i>
+                            )}
                         </button>
-                        <button id="reset" onClick={resetTime}>
-                            🔁
+                        <button className="btn" id="reset" onClick={resetTime}>
+                            <i className="material-icons">loop</i>
                         </button>
                     </div>
                 </div>
